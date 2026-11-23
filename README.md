@@ -25,9 +25,13 @@ A simple and responsive Notes Application developed using React JS as part of my
 - Local Storage
 - React Hooks (useState, useEffect, useRef)
 
-## 📸 Screenshot
+## Screenshots
 
-<!-- Add your project screenshot here -->
+### Desktop View
+![Notes App Desktop](screenshot.png)
+
+### Mobile View
+![Notes App Mobile](screenshot 1.png)
 
 ## ⚙️ Installation
 
