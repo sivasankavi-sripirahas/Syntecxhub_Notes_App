@@ -1,16 +1,50 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# React Notes App
 
-Currently, two official plugins are available:
+A simple and responsive Notes Application developed using React JS as part of my Syntecxhub Web Development Internship.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Add new notes
+- Edit existing notes
+- Delete notes
+- Search notes
+- Mark notes as favorites
+- Save notes using Local Storage
+- Automatically focus the input field
+- Display created date and time
+- Responsive design for desktop and mobile
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React JS
+- JavaScript
+- HTML5
+- CSS3
+- Vite
+- Local Storage
+- React Hooks (useState, useEffect, useRef)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+1. Clone the repository:
+
+   git clone https://github.com/sivasankavi-sripirahas/Syntecxhub_Notes_App.git
+
+2. Open the project folder:
+
+   cd Syntecxhub_Notes_App
+
+3. Install dependencies:
+
+   npm install
+
+4. Run the application:
+
+   npm run dev
+
+## Project
+
+Developed by: Sivasankavi Sripirahas
+
+Internship Organization: Syntecxhub
