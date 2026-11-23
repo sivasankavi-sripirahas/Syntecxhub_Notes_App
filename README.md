@@ -1,9 +1,9 @@
 
-# React Notes App
+# 📝 React Notes App
 
 A simple and responsive Notes Application developed using React JS as part of my Syntecxhub Web Development Internship.
 
-## Features
+## ✨ Features
 
 - Add new notes
 - Edit existing notes
@@ -15,7 +15,7 @@ A simple and responsive Notes Application developed using React JS as part of my
 - Display created date and time
 - Responsive design for desktop and mobile
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - React JS
 - JavaScript
@@ -25,7 +25,11 @@ A simple and responsive Notes Application developed using React JS as part of my
 - Local Storage
 - React Hooks (useState, useEffect, useRef)
 
-## Installation
+## 📸 Screenshot
+
+<!-- Add your project screenshot here -->
+
+## ⚙️ Installation
 
 1. Clone the repository:
 
@@ -39,12 +43,12 @@ A simple and responsive Notes Application developed using React JS as part of my
 
    npm install
 
-4. Run the application:
+4. Start the application:
 
    npm run dev
 
-## Project
+## 👩‍💻 Developer
 
-Developed by: Sivasankavi Sripirahas
+**Sivasankavi Sripirahas**
 
-Internship Organization: Syntecxhub
+Web Development Intern – Syntecxhub
