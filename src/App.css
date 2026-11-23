@@ -1,0 +1,404 @@
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f0e8;
+  color: #40382f;
+}
+
+/* Main App */
+.app {
+  min-height: 100vh;
+  padding: 45px 20px;
+  background: #f5f0e8;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #493d32;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #918477;
+  font-size: 15px;
+}
+
+/* Note Form */
+.note-form {
+  background: #fffdf9;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e9dfd2;
+  box-shadow: 0 5px 20px rgba(91, 73, 53, 0.06);
+  margin-bottom: 35px;
+}
+
+.note-form h2 {
+  color: #806b55;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* Input Fields */
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 15px;
+  border: 1px solid #e3d8c9;
+  border-radius: 9px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  transition: 0.3s;
+  color: #40382f;
+  background: #faf7f1;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: #a99c8d;
+  opacity: 1;
+}
+
+/* Focus Effect */
+input:focus,
+textarea:focus {
+  border-color: #a88e70;
+  box-shadow: 0 0 0 3px rgba(168, 142, 112, 0.12);
+  background: #fffdf9;
+}
+
+/* Textarea */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Form Buttons */
+.form-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Save and Cancel Buttons */
+.save-btn,
+.cancel-btn {
+  background: #806b55;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-btn:hover,
+.cancel-btn:hover {
+  background: #66523f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(91, 73, 53, 0.15);
+}
+
+/* Notes Section */
+.notes-section h2 {
+  color: #493d32;
+  font-size: 23px;
+  margin-bottom: 18px;
+}
+
+/* Search Input */
+.search-input {
+  margin-bottom: 20px;
+}
+
+/* Notes Grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Note Card */
+.note-card {
+  position: relative;
+  min-width: 0;
+  background: #fffdf9;
+  padding: 23px;
+  border-radius: 14px;
+  border: 1px solid #e9dfd2;
+  box-shadow: 0 4px 15px rgba(91, 73, 53, 0.05);
+  transition: 0.3s;
+  overflow-wrap: anywhere;
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(91, 73, 53, 0.10);
+}
+
+/* Note Title */
+.note-card h3 {
+  font-size: 19px;
+  color: #493d32;
+  margin-bottom: 12px;
+  padding-right: 35px;
+}
+
+/* Note Content */
+.note-card p {
+  color: #776b5e;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin-bottom: 15px;
+}
+
+/* Created Date */
+.note-date {
+  display: block;
+  color: #a29586;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+/* Favorite Button */
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  color: #a29586;
+  padding: 5px;
+  font-size: 25px;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.favorite-btn:hover {
+  color: #c76b70;
+  background: #f8e7e2;
+  transform: scale(1.15);
+}
+
+/* Card Buttons */
+.card-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+/* Equal Button Size */
+.card-buttons button {
+  min-width: 90px;
+  padding: 10px 18px;
+  text-align: center;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #eee6da;
+  color: #705a43;
+}
+
+.edit-btn:hover {
+  background: #e1d3c1;
+  transform: translateY(-2px);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #f8e7e2;
+  color: #b45e50;
+}
+
+.delete-btn:hover {
+  background: #f1d5cd;
+  transform: translateY(-2px);
+}
+
+/* Empty Message */
+.empty-message {
+  text-align: center;
+  color: #a29586;
+  font-size: 15px;
+  padding: 25px 10px;
+}
+
+/* Tablet Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 30px 18px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .notes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .app {
+    width: 100%;
+    min-height: 100vh;
+    padding: 22px 14px;
+  }
+
+  .header {
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  .note-form {
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+  }
+
+  .note-form h2 {
+    font-size: 20px;
+  }
+
+  input,
+  textarea {
+    font-size: 16px;
+    padding: 13px;
+  }
+
+  textarea {
+    min-height: 110px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .form-buttons button {
+    width: 100%;
+  }
+
+  .notes-section h2 {
+    font-size: 21px;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .note-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .note-card h3 {
+    font-size: 18px;
+  }
+
+  .card-buttons {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .card-buttons button {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+  }
+
+  .favorite-btn {
+    top: 12px;
+    right: 12px;
+    font-size: 25px;
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 360px) {
+  .app {
+    padding: 18px 10px;
+  }
+
+  .note-form {
+    padding: 15px;
+  }
+
+  .note-card {
+    padding: 16px;
+  }
+
+  .card-buttons {
+    gap: 6px;
+  }
+
+  .card-buttons button {
+    font-size: 12px;
+    padding: 9px 8px;
+  }
+}
