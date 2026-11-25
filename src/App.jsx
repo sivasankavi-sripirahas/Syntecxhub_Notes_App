@@ -1,6 +1,16 @@
 
 import { useState, useEffect, useRef } from "react";
+import { Trash2 } from "lucide-react";
 import "./App.css";
+
+// Pastel colors for Notes
+const noteColors = [
+  "#F8E1E7",
+  "#E0F0E7",
+  "#EAE3F5",
+  "#DFECF7",
+  "#FFF1C9",
+];
 
 function App() {
   // useRef for Title Input
@@ -60,6 +70,7 @@ function App() {
         content: content.trim(),
         createdAt: new Date().toISOString(),
         isFavorite: false,
+        color: noteColors[notes.length % noteColors.length],
       };
 
       setNotes((prevNotes) => [...prevNotes, newNote]);
@@ -77,7 +88,6 @@ function App() {
     setContent(note.content);
     setEditId(note.id);
 
-    // Focus Title Input after clicking Edit
     titleInputRef.current?.focus();
   };
 
@@ -192,31 +202,56 @@ function App() {
           {/* Notes Grid */}
           <div className="notes-grid">
 
-            {filteredNotes.map((note) => (
+            {filteredNotes.map((note, index) => (
 
-              <article className="note-card" key={note.id}>
+              <article
+                className="note-card"
+                key={note.id}
+                style={{
+                  backgroundColor:
+                    note.color ||
+                    noteColors[index % noteColors.length],
+                }}
+              >
+
+                {/* Note Actions */}
+                <div className="note-actions">
+
+                  {/* Favorite Button */}
+                  <button
+  type="button"
+  className="favorite-btn"
+  onClick={() => toggleFavorite(note.id)}
+  title={note.isFavorite ? "Remove from favorites" : "Add to favorites"}
+>
+  {note.isFavorite ? "♥" : "♡"}
+</button>
+                  {/* Edit Button */}
+                  <button
+                    type="button"
+                    className="edit-btn"
+                    onClick={() => editNote(note)}
+                    title="Edit Note"
+                    aria-label="Edit Note"
+                  >
+                    ✎
+                  </button>
+
+                  {/* Delete Button */}
+                 <button
+  type="button"
+  className="delete-btn"
+  onClick={() => deleteNote(note.id)}
+  title="Delete Note"
+  aria-label="Delete Note"
+>
+  <Trash2 size={19} strokeWidth={1.8} />
+</button>
+
+                </div>
 
                 {/* Note Title */}
                 <h3>{note.title}</h3>
-
-                {/* Favorite Button */}
-                <button
-                  type="button"
-                  className="favorite-btn"
-                  onClick={() => toggleFavorite(note.id)}
-                  title={
-                    note.isFavorite
-                      ? "Remove from Favorites"
-                      : "Add to Favorites"
-                  }
-                  aria-label={
-                    note.isFavorite
-                      ? "Remove from Favorites"
-                      : "Add to Favorites"
-                  }
-                >
-                  {note.isFavorite ? "❤" : "♡"}
-                </button>
 
                 {/* Note Content */}
                 <p>{note.content}</p>
@@ -228,27 +263,6 @@ function App() {
                     ? new Date(note.createdAt).toLocaleString()
                     : "Date not available"}
                 </small>
-
-                {/* Edit and Delete Buttons */}
-                <div className="card-buttons">
-
-                  <button
-                    type="button"
-                    className="edit-btn"
-                    onClick={() => editNote(note)}
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    type="button"
-                    className="delete-btn"
-                    onClick={() => deleteNote(note.id)}
-                  >
-                    Delete
-                  </button>
-
-                </div>
 
               </article>
 
