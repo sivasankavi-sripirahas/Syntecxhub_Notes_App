@@ -151,10 +151,14 @@ button {
 }
 
 /* Search Input */
-.search-input {
-  margin-bottom: 20px;
+.notes-section .search-input {
+  width: 100px !important;
+  max-width: 100%;
+  display: block;
+  flex: 0 1 300px;
+  padding: 12px 16px;
+  box-sizing: border-box;
 }
-
 /* Notes Grid */
 .notes-grid {
   display: grid;
@@ -234,12 +238,12 @@ button {
 
 /* Delete Button */
 .delete-btn {
-  color: #b45e50;
+  color: #705a43;
   font-size: 18px;
 }
 
 .delete-btn:hover {
-  color: #923d32;
+  color: #493d32;
   transform: scale(1.15);
   background: transparent;
 }
