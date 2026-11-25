@@ -124,8 +124,8 @@ function App() {
 
       {/* Header */}
       <header className="header">
-        <h1>📑 My Notes</h1>
-        <p>Capture your thoughts, anytime.</p>
+        <h1>My Notes</h1>
+        <p>Your thoughts, beautifully organized.</p>
       </header>
 
       <main className="container">
