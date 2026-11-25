@@ -152,7 +152,7 @@ button {
 
 /* Search Input */
 .notes-section .search-input {
-  width: 100px !important;
+  width: 200px !important;
   max-width: 100%;
   display: block;
   flex: 0 1 300px;
