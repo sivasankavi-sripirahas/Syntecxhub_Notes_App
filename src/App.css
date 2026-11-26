@@ -1,5 +1,4 @@
 
-/* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* Global Styles */
@@ -20,6 +19,8 @@ body {
   min-height: 100vh;
   padding: 45px 20px;
   background: #f5f0e8;
+  color: #40382f;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* Container */
@@ -31,20 +32,54 @@ body {
 
 /* Header */
 .header {
+  max-width: 1000px;
+  margin: 0 auto 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   text-align: center;
-  margin-bottom: 35px;
 }
 
-h1 {
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #806b55;
+}
+
+.header-title h1 {
   font-size: 36px;
   font-weight: 800;
   color: #493d32;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .header p {
   color: #918477;
   font-size: 15px;
+}
+
+.theme-btn {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #806b55;
+  background: #fffdf9;
+  border: 1px solid #e9dfd2;
+  border-radius: 50%;
+}
+
+.theme-btn:hover {
+  background: #eee4d7;
+  transform: rotate(15deg);
 }
 
 /* Note Form */
@@ -58,6 +93,9 @@ h1 {
 }
 
 .note-form h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   color: #806b55;
   font-size: 22px;
   font-weight: 700;
@@ -81,14 +119,12 @@ textarea {
   background: #faf7f1;
 }
 
-/* Placeholder */
 input::placeholder,
 textarea::placeholder {
   color: #a99c8d;
   opacity: 1;
 }
 
-/* Focus Effect */
 input:focus,
 textarea:focus {
   border-color: #a88e70;
@@ -96,7 +132,6 @@ textarea:focus {
   background: #fffdf9;
 }
 
-/* Textarea */
 textarea {
   min-height: 120px;
   resize: vertical;
@@ -122,18 +157,15 @@ button {
   flex-wrap: wrap;
 }
 
-/* Save and Cancel Buttons */
 .save-btn,
 .cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: #806b55;
   color: white;
-  border: none;
   padding: 11px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 .save-btn:hover,
@@ -144,21 +176,37 @@ button {
 }
 
 /* Notes Section */
-.notes-section h2 {
+.notes-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   color: #493d32;
   font-size: 23px;
   margin-bottom: 18px;
 }
 
-/* Search Input */
-.notes-section .search-input {
-  width: 200px !important;
+/* Search */
+.search-wrapper {
+  width: 300px;
   max-width: 100%;
-  display: block;
-  flex: 0 1 300px;
-  padding: 12px 16px;
-  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 20px;
 }
+
+.search-wrapper .search-icon {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  color: #918477;
+  pointer-events: none;
+}
+
+.notes-section .search-input {
+  width: 100%;
+  margin-bottom: 0;
+  padding: 12px 14px 12px 40px;
+}
+
 /* Notes Grid */
 .notes-grid {
   display: grid;
@@ -194,7 +242,6 @@ button {
   gap: 10px;
 }
 
-/* Action Buttons - No Box Background */
 .note-actions button {
   width: auto;
   height: auto;
@@ -208,15 +255,9 @@ button {
   transition: 0.2s;
 }
 
-/* Favorite Button */
+/* Favorite */
 .favorite-btn {
   color: #c76b70;
-  font-size: 24px;
-  line-height: 1;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .favorite-btn:hover {
@@ -224,29 +265,26 @@ button {
   transform: scale(1.15);
 }
 
-/* Edit Button */
+/* Edit */
 .edit-btn {
   color: #705a43;
-  font-size: 21px;
 }
 
 .edit-btn:hover {
   color: #493d32;
   transform: scale(1.15);
-  background: transparent;
 }
 
-/* Delete Button */
+/* Delete */
 .delete-btn {
   color: #705a43;
-  font-size: 18px;
 }
 
 .delete-btn:hover {
-  color: #493d32;
+  color: #b45e50;
   transform: scale(1.15);
-  background: transparent;
 }
+
 /* Note Title */
 .note-card h3 {
   font-size: 19px;
@@ -264,11 +302,17 @@ button {
 }
 
 /* Created Date */
+/* Created Date */
 .note-date {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   color: #8f8173;
   font-size: 12px;
   margin-bottom: 5px;
+  text-align: center;
+  width: 100%;
 }
 
 /* Empty Message */
@@ -279,14 +323,63 @@ button {
   padding: 25px 10px;
 }
 
-/* Tablet Responsive Design */
+/* Dark Mode */
+.dark-mode {
+  background: #242321;
+  color: #f1e9df;
+}
+
+.dark-mode .header-title,
+.dark-mode .header-title h1,
+.dark-mode .notes-heading {
+  color: #f1e9df;
+}
+
+.dark-mode .header p {
+  color: #b8aa9a;
+}
+
+.dark-mode .note-form {
+  background: #34312d;
+  border-color: #51483e;
+}
+
+.dark-mode .note-form h2 {
+  color: #e2cbb0;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background: #292724;
+  color: #f1e9df;
+  border-color: #51483e;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #a99c8d;
+}
+
+.dark-mode input:focus,
+.dark-mode textarea:focus {
+  background: #302d29;
+}
+
+.dark-mode .theme-btn {
+  background: #34312d;
+  color: #f1d59c;
+  border-color: #51483e;
+}
+
+.dark-mode .edit-btn,
+.dark-mode .delete-btn {
+  color: #554b3e;
+}
+
+/* Tablet */
 @media (max-width: 768px) {
   .app {
     padding: 30px 18px;
-  }
-
-  .container {
-    max-width: 100%;
   }
 
   .notes-grid {
@@ -295,12 +388,8 @@ button {
   }
 }
 
-/* Mobile Responsive Design */
+/* Mobile */
 @media (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
-
   .app {
     width: 100%;
     min-height: 100vh;
@@ -311,12 +400,27 @@ button {
     margin-bottom: 25px;
   }
 
-  h1 {
+  .header-title {
+    gap: 8px;
+  }
+
+  .header-title > svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .header-title h1 {
     font-size: 28px;
   }
 
   .header p {
-    font-size: 13px;
+    font-size: 12px;
+  }
+
+  .theme-btn {
+    width: 36px;
+    height: 36px;
+    top: 0;
   }
 
   .note-form {
@@ -326,7 +430,7 @@ button {
   }
 
   .note-form h2 {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   input,
@@ -349,8 +453,12 @@ button {
     width: 100%;
   }
 
-  .notes-section h2 {
+  .notes-heading {
     font-size: 21px;
+  }
+
+  .search-wrapper {
+    width: 100%;
   }
 
   .notes-grid {
@@ -375,7 +483,7 @@ button {
   }
 }
 
-/* Small Mobile Screens */
+/* Small Mobile */
 @media (max-width: 360px) {
   .app {
     padding: 18px 10px;
@@ -392,5 +500,9 @@ button {
 
   .note-actions {
     gap: 8px;
+  }
+
+  .header-title h1 {
+    font-size: 24px;
   }
 }

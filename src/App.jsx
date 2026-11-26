@@ -1,9 +1,21 @@
 
 import { useState, useEffect, useRef } from "react";
-import { Trash2 } from "lucide-react";
+import {
+  Trash2,
+  Heart,
+  Pencil,
+  Search,
+  CalendarDays,
+  Plus,
+  Save,
+  X,
+  Sun,
+  Moon,
+  List,
+} from "lucide-react";
+
 import "./App.css";
 
-// Pastel colors for Notes
 const noteColors = [
   "#F8E1E7",
   "#E0F0E7",
@@ -13,10 +25,10 @@ const noteColors = [
 ];
 
 function App() {
-  // useRef for Title Input
   const titleInputRef = useRef(null);
 
-  // Load saved notes from Local Storage
+  const [darkMode, setDarkMode] = useState(false);
+
   const [notes, setNotes] = useState(() => {
     try {
       const savedNotes = localStorage.getItem("myNotes");
@@ -32,19 +44,16 @@ function App() {
   const [editId, setEditId] = useState(null);
   const [search, setSearch] = useState("");
 
-  // Save notes in Local Storage
   useEffect(() => {
     localStorage.setItem("myNotes", JSON.stringify(notes));
   }, [notes]);
 
-  // Clear Form
   const cancelEdit = () => {
     setEditId(null);
     setTitle("");
     setContent("");
   };
 
-  // Add or Update Note
   const addNote = () => {
     if (!title.trim() || !content.trim()) {
       alert("Please enter both title and note!");
@@ -77,21 +86,16 @@ function App() {
     }
 
     cancelEdit();
-
-    // Focus Title Input after saving
     titleInputRef.current?.focus();
   };
 
-  // Edit Note
   const editNote = (note) => {
     setTitle(note.title);
     setContent(note.content);
     setEditId(note.id);
-
     titleInputRef.current?.focus();
   };
 
-  // Add or Remove Favorite
   const toggleFavorite = (id) => {
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
@@ -102,7 +106,6 @@ function App() {
     );
   };
 
-  // Delete Note
   const deleteNote = (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this note?"
@@ -119,7 +122,6 @@ function App() {
     }
   };
 
-  // Search Notes
   const filteredNotes = notes.filter((note) => {
     const searchText = search.toLowerCase().trim();
 
@@ -130,12 +132,33 @@ function App() {
   });
 
   return (
-    <div className="app">
+    <div className={darkMode ? "app dark-mode" : "app"}>
 
       {/* Header */}
       <header className="header">
-        <h1>My Notes</h1>
-        <p>Your thoughts, beautifully organized.</p>
+
+      <div className="header-title">
+  <div>
+    <h1>My Notes</h1>
+    <p>Your thoughts, beautifully organized.</p>
+  </div>
+</div>
+
+        {/* Dark / Light Mode */}
+        <button
+          type="button"
+          className="theme-btn"
+          onClick={() => setDarkMode(!darkMode)}
+          title={darkMode ? "Light Mode" : "Dark Mode"}
+          aria-label="Toggle theme"
+        >
+          {darkMode ? (
+            <Moon size={22} />
+          ) : (
+            <Sun size={22} />
+          )}
+        </button>
+
       </header>
 
       <main className="container">
@@ -144,10 +167,10 @@ function App() {
         <section className="note-form">
 
           <h2>
+            <Plus size={25} strokeWidth={2.5} />
             {editId !== null ? "Edit Note" : "Create a New Note"}
           </h2>
 
-          {/* Note Title */}
           <input
             ref={titleInputRef}
             type="text"
@@ -156,14 +179,13 @@ function App() {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          {/* Note Content */}
           <textarea
             placeholder="Write your thoughts here..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
 
-          {/* Save and Cancel Buttons */}
+          {/* Save and Cancel */}
           <div className="form-buttons">
 
             <button
@@ -171,6 +193,7 @@ function App() {
               className="save-btn"
               onClick={addNote}
             >
+              <Save size={19} />
               {editId !== null ? "Update Note" : "Save Note"}
             </button>
 
@@ -179,6 +202,7 @@ function App() {
               className="cancel-btn"
               onClick={cancelEdit}
             >
+              <X size={19} />
               Cancel
             </button>
 
@@ -188,16 +212,23 @@ function App() {
         {/* Notes Section */}
         <section className="notes-section">
 
-          <h2>My Notes ({notes.length})</h2>
+          <h2 className="notes-heading">
+            <List size={27} strokeWidth={2.3} />
+            My Notes ({notes.length})
+          </h2>
 
           {/* Search Box */}
-          <input
-            type="text"
-            className="search-input"
-            placeholder="🔍︎ Search your notes..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+          <div className="search-wrapper">
+            <Search size={19} className="search-icon" />
+
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search your notes..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
 
           {/* Notes Grid */}
           <div className="notes-grid">
@@ -217,16 +248,24 @@ function App() {
                 {/* Note Actions */}
                 <div className="note-actions">
 
-                  {/* Favorite Button */}
                   <button
-  type="button"
-  className="favorite-btn"
-  onClick={() => toggleFavorite(note.id)}
-  title={note.isFavorite ? "Remove from favorites" : "Add to favorites"}
->
-  {note.isFavorite ? "♥" : "♡"}
-</button>
-                  {/* Edit Button */}
+                    type="button"
+                    className="favorite-btn"
+                    onClick={() => toggleFavorite(note.id)}
+                    title={
+                      note.isFavorite
+                        ? "Remove from favorites"
+                        : "Add to favorites"
+                    }
+                    aria-label="Toggle favorite"
+                  >
+                    <Heart
+                      size={21}
+                      strokeWidth={1.8}
+                      fill={note.isFavorite ? "currentColor" : "none"}
+                    />
+                  </button>
+
                   <button
                     type="button"
                     className="edit-btn"
@@ -234,30 +273,28 @@ function App() {
                     title="Edit Note"
                     aria-label="Edit Note"
                   >
-                    ✎
+                    <Pencil size={20} strokeWidth={2} />
                   </button>
 
-                  {/* Delete Button */}
-                 <button
-  type="button"
-  className="delete-btn"
-  onClick={() => deleteNote(note.id)}
-  title="Delete Note"
-  aria-label="Delete Note"
->
-  <Trash2 size={19} strokeWidth={1.8} />
-</button>
+                  <button
+                    type="button"
+                    className="delete-btn"
+                    onClick={() => deleteNote(note.id)}
+                    title="Delete Note"
+                    aria-label="Delete Note"
+                  >
+                    <Trash2 size={20} strokeWidth={1.8} />
+                  </button>
 
                 </div>
 
-                {/* Note Title */}
                 <h3>{note.title}</h3>
 
-                {/* Note Content */}
                 <p>{note.content}</p>
 
-                {/* Created Date and Time */}
+                {/* Created Date */}
                 <small className="note-date">
+                  <CalendarDays size={17} />
                   Created:{" "}
                   {note.createdAt
                     ? new Date(note.createdAt).toLocaleString()
